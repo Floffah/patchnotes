@@ -4,7 +4,7 @@ import gql from "graphql-tag";
 import { Note } from "../../lib/util/note";
 import { APIUrl } from "../../lib/util/urls";
 import { NextSeo } from "next-seo";
-import { GetServerSideProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import NotePagePage from "../../components/structures/NotePage";
 
 const NotePage: FC<{ note: Note }> = (p) => {
@@ -19,7 +19,7 @@ const NotePage: FC<{ note: Note }> = (p) => {
     );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
     if (!context.params || !context.params.id) return { notFound: true };
 
     const id = parseInt(context.params.id as string);
@@ -57,6 +57,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
                 ...data.getNote,
             },
         },
+        revalidate: 3600,
+    };
+};
+
+export const getStaticPaths: GetStaticPaths = async (_c) => {
+    return {
+        paths: [
+            {
+                params: { id: "1" },
+            },
+        ],
+        fallback: "blocking",
     };
 };
 
