@@ -9,9 +9,14 @@ generator client {
 }
 
 model PatchNote {
-    id Int @id @default(autoincrement())
-    version String
-    name String
-    body String
-    tags
+  id      Int    @id @default(autoincrement())
+  version String
+  name    String
+  body    String
+  tags    Tag[]
+}
+
+model Tag {
+  name       String      @id
+  patchnotes PatchNote[]
 }
