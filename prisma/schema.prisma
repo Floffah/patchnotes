@@ -1,0 +1,17 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["selectRelationCount", "orderByRelation", "orderByAggregateGroup"]
+}
+
+model PatchNote {
+    id Int @id @default(autoincrement())
+    version String
+    name String
+    body String
+    tags
+}
