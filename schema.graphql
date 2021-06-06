@@ -1,0 +1,36 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+"GraphQL object representing a patch note"
+type PatchNote {
+    "Patch note body"
+    body: String
+    "Patch note id"
+    id: Int
+    "Patch note name"
+    name: String
+    "Patch note tags"
+    tags: [Tag]
+    "Patch note version"
+    version: String
+}
+
+"Root query"
+type Query {
+    "Fetch a note"
+    getNote(
+        "The patch note ID"
+        id: Int
+    ): PatchNote
+    "For checking api latency"
+    ping: String
+}
+
+"Patch note tag"
+type Tag {
+    "Tag name"
+    name: String
+}

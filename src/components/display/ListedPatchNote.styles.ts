@@ -15,9 +15,11 @@ export const LPNTitle = styled.p`
 export const LPNIcons = styled.div`
     display: inline-block;
     float: right;
+    user-select: none;
 
     ${StyledIcon} {
         display: inline-block;
         margin: 1px 0 0 3px;
+        cursor: pointer;
     }
 `;

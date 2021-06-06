@@ -5,7 +5,7 @@ export const NoteListContainer = styled.div`
     padding: 5px 10px;
     width: 600px;
     margin: auto;
-    box-sizing: content-box;
+    box-sizing: border-box;
 
     @media screen and (max-width: 600px) {
         width: 100%;

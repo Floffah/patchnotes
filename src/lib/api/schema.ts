@@ -1,7 +1,9 @@
+import { PrismaClient } from "@prisma/client";
 import { GraphQLObjectType, GraphQLSchema, GraphQLString } from "graphql";
+import { NoteFields } from "./schema/notes";
 
 export const APISchema = new GraphQLSchema({
-    query: new GraphQLObjectType({
+    query: new GraphQLObjectType<any, SchemaContext>({
         name: "Query",
         description: "Root query",
         fields: {
@@ -10,6 +12,11 @@ export const APISchema = new GraphQLSchema({
                 type: GraphQLString,
                 resolve: () => "pong",
             },
+            ...NoteFields,
         },
     }),
 });
+
+export interface SchemaContext {
+    db: PrismaClient;
+}

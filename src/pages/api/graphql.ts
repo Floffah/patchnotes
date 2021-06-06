@@ -10,7 +10,6 @@ const apollo = new ApolloServer({
     executor: executor(APISchema),
     playground: true,
     introspection: true,
-    tracing: true,
     context: async () => ({
         db,
     }),

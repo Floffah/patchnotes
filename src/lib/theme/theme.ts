@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { ThemeContext } from "styled-components";
+
 export interface Theme {
     name?: string;
 
@@ -15,3 +18,5 @@ export interface Theme {
 }
 
 export const Themes = new Map<string, Theme>([]);
+
+export const useTheme = () => useContext(ThemeContext) as Theme;

@@ -3,8 +3,14 @@ import { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
 import { ApplyGlobalStyles } from "../lib/theme/styles";
 import { OneDarkTheme } from "../lib/theme/one-dark";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 const App: FC<AppProps> = (p) => {
+    const apollo = new ApolloClient({
+        uri: "/api/graphql",
+        cache: new InMemoryCache(),
+    });
+
     return (
         <>
             <DefaultSeo
@@ -19,9 +25,11 @@ const App: FC<AppProps> = (p) => {
                     site_name: "Patch Notes",
                 }}
             />
-            <ApplyGlobalStyles theme={OneDarkTheme}>
-                <p.Component {...p.pageProps} />
-            </ApplyGlobalStyles>
+            <ApolloProvider client={apollo}>
+                <ApplyGlobalStyles theme={OneDarkTheme}>
+                    <p.Component {...p.pageProps} />
+                </ApplyGlobalStyles>
+            </ApolloProvider>
         </>
     );
 };
