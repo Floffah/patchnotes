@@ -4,6 +4,23 @@ schema {
     query: Query
 }
 
+type Edge {
+    cursor: Int
+    node: PatchNote
+}
+
+type Page {
+    edges: [Edge]
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PageInfo {
+    endCursor: Int
+    hasNextPage: Boolean
+    startCursor: Int
+}
+
 "GraphQL object representing a patch note"
 type PatchNote {
     "Patch note body"
@@ -23,10 +40,14 @@ type Query {
     "Fetch a note"
     getNote(
         "The patch note ID"
-        id: Int
+        id: Int!
     ): PatchNote
+    "All notes (uses cursor pagination)"
+    notes(afterCursor: Int, first: Int = 5): Page
     "For checking api latency"
     ping: String
+    "Get the most recent id of note"
+    recentNote: Int
 }
 
 "Patch note tag"

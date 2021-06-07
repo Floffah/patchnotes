@@ -23,3 +23,12 @@ export const LPNIcons = styled.div`
         cursor: pointer;
     }
 `;
+
+export const LPNBody = styled.div`
+    p:first-child {
+        margin-top: 10px;
+    }
+    p:last-child {
+        margin-bottom: 0;
+    }
+`;
