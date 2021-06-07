@@ -2,6 +2,8 @@ import styled, { ThemeProps } from "styled-components";
 import { shift } from "../../lib/theme/resolve";
 import { Theme } from "../../lib/theme/theme";
 import { StyledIcon } from "../util/StyledIcon";
+import Embed from "../display/Embed";
+import ReactMarkdown from "react-markdown";
 
 export const NotePageContainer = styled.div`
     padding: 5px 10px;
@@ -72,5 +74,15 @@ export const NotePageBackContainer = styled.div<ThemeProps<Theme>>`
         display: inline-block;
         margin: -2px 0 0 7px;
         vertical-align: middle;
+    }
+`;
+
+export const NotePageBodyContainer = styled(ReactMarkdown)`
+    p:first-child {
+        margin-top: 0;
+    }
+
+    p:last-child {
+        margin-bottom: 0;
     }
 `;

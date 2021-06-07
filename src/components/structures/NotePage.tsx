@@ -2,15 +2,16 @@ import React, { FC } from "react";
 import { Note } from "../../lib/util/note";
 import {
     NotePageBackContainer,
+    NotePageBodyContainer,
     NotePageContainer,
     NotePageHeader,
     NotePageID,
     NotePageVersion,
 } from "./NotePage.styles";
-import Embed from "../display/Embed";
 import { StyledIcon } from "../util/StyledIcon";
 import { mdiArrowLeftCircle } from "@mdi/js";
 import { useRouter } from "next/router";
+import Embed from "../display/Embed";
 
 const NotePagePage: FC<{ note: Note }> = (p) => {
     const router = useRouter();
@@ -25,7 +26,7 @@ const NotePagePage: FC<{ note: Note }> = (p) => {
                 <NotePageHeader>{p.note.name}</NotePageHeader>
                 <NotePageVersion>{p.note.version}</NotePageVersion>
                 <Embed>
-                    <p style={{ margin: "0" }}>{p.note.body}</p>
+                    <NotePageBodyContainer>{p.note.body}</NotePageBodyContainer>
                 </Embed>
                 <NotePageID>id: {p.note.id}</NotePageID>
             </NotePageContainer>
