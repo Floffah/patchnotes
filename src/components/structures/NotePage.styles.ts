@@ -2,7 +2,6 @@ import styled, { ThemeProps } from "styled-components";
 import { shift } from "../../lib/theme/resolve";
 import { Theme } from "../../lib/theme/theme";
 import { StyledIcon } from "../util/StyledIcon";
-import Embed from "../display/Embed";
 import ReactMarkdown from "react-markdown";
 
 export const NotePageContainer = styled.div`
@@ -61,15 +60,18 @@ export const NotePageBackContainer = styled.div<ThemeProps<Theme>>`
     background-color: rgba(0, 0, 0, 0);
     border-radius: 5px;
     transition: 0.1s background-color;
+
     &:hover {
         background-color: ${(props) =>
             shift(props.theme.shiftback, 0.03, props.theme.back)};
     }
+
     ${StyledIcon} {
         display: inline-block;
         margin: 0;
         vertical-align: middle;
     }
+
     p {
         display: inline-block;
         margin: -2px 0 0 7px;
