@@ -14,6 +14,10 @@ export const NotePageContainer = styled.div`
         width: 100%;
         margin: 0;
     }
+
+    @media screen and (max-width: 730px) {
+        margin-top: 20px;
+    }
 `;
 
 export const NotePageHeader = styled.h1`
@@ -23,7 +27,7 @@ export const NotePageHeader = styled.h1`
 
     @media screen and (max-width: 600px) {
         width: 100%;
-        margin: 5px 0 0 10px;
+        margin: 5px 0 0 0;
     }
 `;
 
@@ -34,7 +38,7 @@ export const NotePageVersion = styled.h4`
 
     @media screen and (max-width: 600px) {
         width: 100%;
-        margin: 5px 0 0 10px;
+        margin: 0 0 0 0;
     }
 `;
 
@@ -46,7 +50,7 @@ export const NotePageID = styled.p`
 
     @media screen and (max-width: 600px) {
         width: 100%;
-        margin: 5px 0 0 10px;
+        margin: 0 0 0 0;
     }
 `;
 

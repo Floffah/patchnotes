@@ -3,13 +3,13 @@ import { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
 import { ApplyGlobalStyles } from "../lib/theme/styles";
 import { OneDarkTheme } from "../lib/theme/one-dark";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { GlobalIcons } from "../components/structures/GlobalStyles";
+import { StyledIcon } from "../components/util/StyledIcon";
+import { mdiDiscord, mdiGithub } from "@mdi/js";
+import { useRouter } from "next/router";
 
 const App: FC<AppProps> = (p) => {
-    const apollo = new ApolloClient({
-        uri: "/api/graphql",
-        cache: new InMemoryCache(),
-    });
+    const router = useRouter();
 
     return (
         <>
@@ -25,11 +25,25 @@ const App: FC<AppProps> = (p) => {
                     site_name: "Patch Notes",
                 }}
             />
-            <ApolloProvider client={apollo}>
-                <ApplyGlobalStyles theme={OneDarkTheme}>
-                    <p.Component {...p.pageProps} />
-                </ApplyGlobalStyles>
-            </ApolloProvider>
+            <ApplyGlobalStyles theme={OneDarkTheme}>
+                <p.Component {...p.pageProps} />
+                <GlobalIcons>
+                    <StyledIcon
+                        path={mdiGithub}
+                        size={2}
+                        onClick={() =>
+                            router.push("https://github.com/floffah/patchnotes")
+                        }
+                    />
+                    <StyledIcon
+                        path={mdiDiscord}
+                        size={2}
+                        onClick={() =>
+                            router.push("https://discord.gg/bc8Y2y9")
+                        }
+                    />
+                </GlobalIcons>
+            </ApplyGlobalStyles>
         </>
     );
 };

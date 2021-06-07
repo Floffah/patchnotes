@@ -6,7 +6,7 @@ export const IndexHeader = styled.h1`
     user-select: none;
 
     @media screen and (max-width: 600px) {
-        width: 100%;
+        width: calc(100% - 10px);
         margin: 5px 0 0 10px;
     }
 `;
